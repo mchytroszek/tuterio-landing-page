@@ -1,9 +1,14 @@
+"use client";
+
 import React, { useState } from 'react';
+import { useTheme } from './ThemeProvider';
 
 const EmailSignup: React.FC = () => {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

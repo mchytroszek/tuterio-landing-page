@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
@@ -16,6 +16,7 @@ import { MdFitnessCenter, MdSportsMartialArts, MdOutlineMenuBook } from 'react-i
 import Header from '@/components/Header';
 import EmailSignup from '@/components/EmailSignup';
 import FeatureCard from '@/components/FeatureCard';
+import { useTheme } from '@/components/ThemeProvider';
 
 // Animation variants
 const fadeIn = {
@@ -40,12 +41,24 @@ const staggerContainer = {
 };
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // Return nothing on the server side
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
       {/* Hero Section */}
-      <section className="section pt-20 md:pt-28 lg:pt-32">
+      <section className={`section pt-20 md:pt-28 lg:pt-32 ${isDark ? 'bg-fluent-darkBg1' : 'bg-fluent-lightBg1'}`}>
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div 
@@ -54,21 +67,21 @@ export default function Home() {
               variants={fadeIn}
               className="space-y-6"
             >
-              <h1 className="heading-xl text-fluent-darkText1">
+              <h1 className={`heading-xl ${isDark ? 'text-fluent-darkText1' : 'text-fluent-lightText1'}`}>
                 Build <span className="text-primary-500">Interactive Tutorials</span> That Convert
               </h1>
-              <p className="text-xl text-fluent-darkText2 md:pr-10">
+              <p className={`text-xl ${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'} md:pr-10`}>
                 Empower your students with engaging interactive tutorials that can be embedded anywhere. Perfect for fitness trainers, educators and content creators.
               </p>
               <div className="pt-4">
                 <a href="#signup" className="btn-primary mr-4">Get Early Access</a>
                 <a href="#features" className="btn-secondary">Learn More</a>
               </div>
-              <div className="pt-4 flex items-center text-sm text-fluent-darkText2">
+              <div className={`pt-4 flex items-center text-sm ${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'}`}>
                 <span className="mr-2 text-primary-500">✓</span> No coding required
-                <span className="mx-2 text-fluent-gray130">|</span>
+                <span className={`mx-2 ${isDark ? 'text-fluent-gray130' : 'text-fluent-gray70'}`}>|</span>
                 <span className="mr-2 text-primary-500">✓</span> Embed anywhere
-                <span className="mx-2 text-fluent-gray130">|</span>
+                <span className={`mx-2 ${isDark ? 'text-fluent-gray130' : 'text-fluent-gray70'}`}>|</span>
                 <span className="mr-2 text-primary-500">✓</span> Track progress
               </div>
             </motion.div>
@@ -81,42 +94,42 @@ export default function Home() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-secondary-500 opacity-90"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-fluent-darkBg2 rounded-lg shadow-lg w-5/6 h-4/5 p-4 overflow-hidden border border-fluent-gray140">
-                  <div className="bg-fluent-darkBg3 h-8 mb-3 rounded flex items-center px-3">
+                <div className={`${isDark ? 'bg-fluent-darkBg2 border-fluent-gray140' : 'bg-fluent-lightBg2 border-fluent-gray40'} rounded-lg shadow-lg w-5/6 h-4/5 p-4 overflow-hidden border`}>
+                  <div className={`${isDark ? 'bg-fluent-darkBg3' : 'bg-fluent-lightBg3'} h-8 mb-3 rounded flex items-center px-3`}>
                     <div className="flex gap-1">
                       <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                       <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                       <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                     </div>
-                    <div className="mx-auto text-xs text-fluent-darkText3">tuterio Builder</div>
+                    <div className={`mx-auto text-xs ${isDark ? 'text-fluent-darkText3' : 'text-fluent-lightText3'}`}>tuterio Builder</div>
                   </div>
                   <div className="grid grid-cols-3 gap-2 h-[calc(100%-2rem)]">
-                    <div className="bg-fluent-darkBg2 shadow col-span-1 rounded p-2 border border-fluent-gray160">
-                      <div className="h-4 w-3/4 bg-fluent-gray140 rounded mb-2"></div>
+                    <div className={`${isDark ? 'bg-fluent-darkBg2 border-fluent-gray160' : 'bg-fluent-lightBg2 border-fluent-gray40'} shadow col-span-1 rounded p-2 border`}>
+                      <div className={`h-4 w-3/4 ${isDark ? 'bg-fluent-gray140' : 'bg-fluent-gray40'} rounded mb-2`}></div>
                       <div className="space-y-1">
                         {[1, 2, 3, 4].map(i => (
-                          <div key={i} className="h-8 bg-fluent-darkBg3 rounded flex items-center px-2">
+                          <div key={i} className={`h-8 ${isDark ? 'bg-fluent-darkBg3' : 'bg-fluent-lightBg3'} rounded flex items-center px-2`}>
                             <div className="w-2 h-2 bg-primary-500 rounded-full mr-2"></div>
-                            <div className="h-2 w-2/3 bg-fluent-gray140 rounded"></div>
+                            <div className={`h-2 w-2/3 ${isDark ? 'bg-fluent-gray140' : 'bg-fluent-gray40'} rounded`}></div>
                           </div>
                         ))}
                       </div>
                     </div>
-                    <div className="col-span-2 bg-fluent-darkBg2 shadow rounded p-3 border border-fluent-gray160">
-                      <div className="h-6 w-1/3 bg-fluent-gray140 rounded mb-4"></div>
+                    <div className={`col-span-2 ${isDark ? 'bg-fluent-darkBg2 border-fluent-gray160' : 'bg-fluent-lightBg2 border-fluent-gray40'} shadow rounded p-3 border`}>
+                      <div className={`h-6 w-1/3 ${isDark ? 'bg-fluent-gray140' : 'bg-fluent-gray40'} rounded mb-4`}></div>
                       <div className="space-y-2">
-                        <div className="h-3 w-full bg-fluent-darkBg3 rounded"></div>
-                        <div className="h-3 w-full bg-fluent-darkBg3 rounded"></div>
-                        <div className="h-3 w-2/3 bg-fluent-darkBg3 rounded"></div>
+                        <div className={`h-3 w-full ${isDark ? 'bg-fluent-darkBg3' : 'bg-fluent-lightBg3'} rounded`}></div>
+                        <div className={`h-3 w-full ${isDark ? 'bg-fluent-darkBg3' : 'bg-fluent-lightBg3'} rounded`}></div>
+                        <div className={`h-3 w-2/3 ${isDark ? 'bg-fluent-darkBg3' : 'bg-fluent-lightBg3'} rounded`}></div>
                       </div>
                       <div className="mt-4 grid grid-cols-2 gap-2">
-                        <div className="h-16 bg-fluent-darkBg3 rounded border border-fluent-gray160"></div>
-                        <div className="h-16 bg-fluent-darkBg3 rounded border border-fluent-gray160"></div>
+                        <div className={`h-16 ${isDark ? 'bg-fluent-darkBg3 border-fluent-gray160' : 'bg-fluent-lightBg3 border-fluent-gray40'} rounded border`}></div>
+                        <div className={`h-16 ${isDark ? 'bg-fluent-darkBg3 border-fluent-gray160' : 'bg-fluent-lightBg3 border-fluent-gray40'} rounded border`}></div>
                       </div>
-                      <div className="mt-4 h-24 bg-primary-900/30 rounded border border-primary-800/50 p-2">
-                        <div className="h-3 w-1/4 bg-primary-700/50 rounded mb-2"></div>
-                        <div className="h-3 w-3/4 bg-fluent-darkBg3 rounded mb-2"></div>
-                        <div className="h-3 w-2/3 bg-fluent-darkBg3 rounded"></div>
+                      <div className={`mt-4 h-24 ${isDark ? 'bg-primary-900/30 border-primary-800/50' : 'bg-primary-100 border-primary-200'} rounded border p-2`}>
+                        <div className={`h-3 w-1/4 ${isDark ? 'bg-primary-700/50' : 'bg-primary-300'} rounded mb-2`}></div>
+                        <div className={`h-3 w-3/4 ${isDark ? 'bg-fluent-darkBg3' : 'bg-fluent-lightBg3'} rounded mb-2`}></div>
+                        <div className={`h-3 w-2/3 ${isDark ? 'bg-fluent-darkBg3' : 'bg-fluent-lightBg3'} rounded`}></div>
                       </div>
                     </div>
                   </div>
@@ -128,7 +141,7 @@ export default function Home() {
       </section>
       
       {/* Features Section */}
-      <section id="features" className="section bg-fluent-darkBg2">
+      <section id="features" className={`section ${isDark ? 'bg-fluent-darkBg2' : 'bg-fluent-lightBg2'}`}>
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.div
@@ -137,10 +150,10 @@ export default function Home() {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="heading-lg mb-4 text-fluent-darkText1">
+              <h2 className={`heading-lg mb-4 ${isDark ? 'text-fluent-darkText1' : 'text-fluent-lightText1'}`}>
                 Powerful Features for Content Creators
               </h2>
-              <p className="text-xl text-fluent-darkText2">
+              <p className={`text-xl ${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'}`}>
                 Everything you need to create engaging, interactive tutorials that convert and retain students.
               </p>
             </motion.div>
@@ -205,7 +218,7 @@ export default function Home() {
       </section>
       
       {/* Fitness Module Section */}
-      <section id="fitness" className="section bg-fluent-darkBg3">
+      <section id="fitness" className={`section ${isDark ? 'bg-fluent-darkBg3' : 'bg-fluent-lightBg3'}`}>
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.div
@@ -214,10 +227,10 @@ export default function Home() {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
             >
-              <h2 className="heading-lg mb-4 text-fluent-darkText1">
+              <h2 className={`heading-lg mb-4 ${isDark ? 'text-fluent-darkText1' : 'text-fluent-lightText1'}`}>
                 Specialized for Fitness Trainers
               </h2>
-              <p className="text-xl text-fluent-darkText2">
+              <p className={`text-xl ${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'}`}>
                 Purpose-built features to help personal trainers create effective workout programs and nutrition plans.
               </p>
             </motion.div>
@@ -266,8 +279,8 @@ export default function Home() {
               className="relative h-[500px] rounded-lg overflow-hidden shadow-xl"
             >
               <div className="absolute inset-0 flex items-center justify-center p-6">
-                <div className="bg-fluent-darkBg2 rounded-lg shadow-lg w-full h-full p-4 overflow-hidden border border-fluent-gray160">
-                  <div className="bg-secondary-900 h-10 mb-4 rounded flex items-center px-4">
+                <div className={`${isDark ? 'bg-fluent-darkBg2 border-fluent-gray160' : 'bg-fluent-lightBg2 border-fluent-gray40'} rounded-lg shadow-lg w-full h-full p-4 overflow-hidden border`}>
+                  <div className={`${isDark ? 'bg-secondary-900' : 'bg-primary-100'} h-10 mb-4 rounded flex items-center px-4`}>
                     <div className="font-medium text-primary-400">Workout Program: 12-Week Strength</div>
                   </div>
                   <div className="grid grid-cols-7 gap-2 mb-4">
@@ -279,13 +292,13 @@ export default function Home() {
                   </div>
                   <div className="space-y-3">
                     {Array.from({ length: 3 }).map((_, i) => (
-                      <div key={i} className="bg-fluent-darkBg1 rounded-lg p-3 border border-fluent-gray160">
+                      <div key={i} className={`${isDark ? 'bg-fluent-darkBg1 border-fluent-gray160' : 'bg-fluent-lightBg1 border-fluent-gray40'} rounded-lg p-3 border`}>
                         <div className="flex justify-between items-center mb-2">
                           <div className="font-medium text-sm text-fluent-darkText1">Exercise {i + 1}</div>
                           <div className="text-xs text-fluent-darkText3">3 sets x 12 reps</div>
                         </div>
                         <div className="grid grid-cols-3 gap-2">
-                          <div className="bg-fluent-gray140 h-16 rounded"></div>
+                          <div className={`${isDark ? 'bg-fluent-gray140' : 'bg-fluent-gray40'} h-16 rounded`}></div>
                           <div className="col-span-2 space-y-1 text-xs">
                             <div className="h-2 bg-fluent-gray140 rounded w-3/4"></div>
                             <div className="h-2 bg-fluent-gray140 rounded w-full"></div>
@@ -298,7 +311,7 @@ export default function Home() {
                         </div>
                       </div>
                     ))}
-                    <div className="bg-secondary-900/30 border border-secondary-800/50 rounded-lg p-3 mt-4">
+                    <div className={`${isDark ? 'bg-secondary-900/30 border-secondary-800/50' : 'bg-primary-100 border-primary-200'} rounded-lg p-3 mt-4`}>
                       <div className="font-medium text-sm text-primary-400 mb-2">Client Notes</div>
                       <div className="h-2 bg-secondary-800/50 rounded w-full mb-1"></div>
                       <div className="h-2 bg-secondary-800/50 rounded w-3/4 mb-1"></div>
@@ -312,7 +325,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Call to Action */}
+      {/* Call to Action - Always dark theme for consistent branding */}
       <section id="signup" className="section bg-gradient-to-r from-secondary-900 to-primary-900 text-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
@@ -337,7 +350,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Footer */}
+      {/* Footer - Always dark theme for consistent branding */}
       <footer className="bg-fluent-darkBg3 text-fluent-darkText2 py-12">
         <div className="container-custom">
           <div className="grid md:grid-cols-4 gap-8">

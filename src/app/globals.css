@@ -29,12 +29,18 @@
   --secondary-900: #0b1025;
   --secondary-950: #080c1f;
   
-  /* Background colors - Black */
+  /* Light theme colors */
+  --fluent-lightBg1: #ffffff;
+  --fluent-lightBg2: #f5f5f5;
+  --fluent-lightBg3: #e6e6e6;
+  --fluent-lightText1: #000000;
+  --fluent-lightText2: #333333;
+  --fluent-lightText3: #666666;
+  
+  /* Dark theme colors */
   --fluent-darkBg1: #000000;
   --fluent-darkBg2: #0a0a0a;
   --fluent-darkBg3: #141414;
-  
-  /* Text colors */
   --fluent-darkText1: #ffffff;
   --fluent-darkText2: #d9d9d9;
   --fluent-darkText3: #a0a0a0;
@@ -59,8 +65,14 @@
 }
 
 @layer base {
-  body {
+  /* Dark mode (default) */
+  .dark body {
     @apply bg-fluent-darkBg1 text-fluent-darkText2;
+  }
+  
+  /* Light mode */
+  body {
+    @apply bg-fluent-lightBg1 text-fluent-lightText2;
   }
 }
 
@@ -85,15 +97,29 @@
     @apply text-2xl md:text-3xl font-bold leading-tight;
   }
   
-  .btn-primary {
+  /* Dark mode button styles */
+  .dark .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 focus:ring-offset-fluent-darkBg1 transition-colors;
   }
   
-  .btn-secondary {
+  .dark .btn-secondary {
     @apply inline-flex items-center justify-center px-6 py-3 border border-secondary-700 text-base font-medium rounded-md text-fluent-darkText1 bg-secondary-900 hover:bg-secondary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 focus:ring-offset-fluent-darkBg1 transition-colors;
   }
   
-  .input-field {
+  .dark .input-field {
     @apply block w-full px-4 py-3 bg-fluent-darkBg1 border border-fluent-gray140 rounded-md text-fluent-darkText1 placeholder-fluent-darkText3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors;
+  }
+  
+  /* Light mode button styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 focus:ring-offset-fluent-lightBg1 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-secondary-200 text-base font-medium rounded-md text-secondary-800 bg-secondary-50 hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 focus:ring-offset-fluent-lightBg1 transition-colors;
+  }
+  
+  .input-field {
+    @apply block w-full px-4 py-3 bg-fluent-lightBg1 border border-fluent-gray40 rounded-md text-fluent-lightText1 placeholder-fluent-lightText3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors;
   }
 } 
