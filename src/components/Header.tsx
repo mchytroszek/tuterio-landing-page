@@ -34,7 +34,7 @@ const Header: React.FC = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
+      isScrolled || isMobileMenuOpen
         ? isDark 
           ? 'bg-fluent-darkBg1 shadow-md py-2' 
           : 'bg-fluent-lightBg1 shadow-md py-2'
@@ -129,9 +129,9 @@ const Header: React.FC = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden mt-4"
+            className={`md:hidden mt-4 ${isDark ? 'bg-fluent-darkBg1' : 'bg-fluent-lightBg1'} rounded-b-lg shadow-lg`}
           >
-            <nav className="flex flex-col space-y-4 pb-4">
+            <nav className="flex flex-col space-y-4 pb-4 px-4">
               <Link 
                 href="#features" 
                 className={`${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'} hover:text-primary-400 transition-colors`}
