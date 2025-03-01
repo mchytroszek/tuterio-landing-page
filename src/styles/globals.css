@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-fluent-darkBg1 text-fluent-darkText1;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 text-white px-6 py-3 rounded-md font-medium 
+    hover:bg-primary-600 transition-all duration-200 focus:outline-none focus:ring-2 
+    focus:ring-primary-400 focus:ring-opacity-50;
+  }
+  
+  .btn-secondary {
+    @apply bg-fluent-gray160 text-white border border-fluent-gray130 px-6 py-3 rounded-md 
+    font-medium hover:bg-fluent-gray150 transition-all duration-200 
+    focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-50;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-semibold;
+  }
+  
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-semibold;
+  }
+  
+  .heading-md {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+  
+  .container-custom {
+    @apply container mx-auto px-4 md:px-8;
+  }
+  
+  .feature-card {
+    @apply bg-fluent-darkBg2 p-6 rounded-lg border border-fluent-gray160 hover:border-primary-500 transition-all duration-300;
+  }
+  
+  /* Fluent UI inspired focus styles */
+  .fluent-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-fluent-darkBg1;
+  }
+  
+  /* Fluent UI inspired text styles */
+  .text-title {
+    @apply text-fluent-darkText1 text-2xl font-semibold;
+  }
+  
+  .text-subtitle {
+    @apply text-fluent-darkText2 text-lg;
+  }
+  
+  .text-body {
+    @apply text-fluent-darkText2;
+  }
+  
+  .text-caption {
+    @apply text-fluent-darkText3 text-sm;
+  }
+} 
