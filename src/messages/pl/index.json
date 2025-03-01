@@ -1,0 +1,92 @@
+{
+  "navigation": {
+    "features": "Funkcje",
+    "fitness": "Fitness",
+    "getEarlyAccess": "Uzyskaj Wczesny Dostęp"
+  },
+  "hero": {
+    "title": "Twórz <primary>Interaktywne Tutoriale</primary> Które Konwertują",
+    "subtitle": "Wzmocnij swoich uczniów dzięki angażującym interaktywnym tutorialom, które można osadzić w dowolnym miejscu. Idealne dla trenerów fitness, edukatorów i twórców treści.",
+    "noCoding": "Bez kodowania",
+    "embedAnywhere": "Osadź gdziekolwiek",
+    "trackProgress": "Śledź postępy"
+  },
+  "features": {
+    "title": "Potężne Funkcje dla Twórców Treści",
+    "subtitle": "Wszystko, czego potrzebujesz, aby tworzyć angażujące, interaktywne tutoriale, które konwertują i zatrzymują uczniów.",
+    "cards": {
+      "dragAndDrop": {
+        "title": "Kreator Przeciągnij i Upuść",
+        "description": "Twórz piękne tutoriale dzięki naszemu intuicyjnemu interfejsowi przeciągnij i upuść. Bez kodowania."
+      },
+      "embedAnywhere": {
+        "title": "Osadź Gdziekolwiek",
+        "description": "Bezproblemowo osadzaj swoje tutoriale na dowolnej stronie internetowej za pomocą prostego fragmentu JavaScript."
+      },
+      "progressTracking": {
+        "title": "Śledzenie Postępów",
+        "description": "Śledź postępy swoich uczniów i identyfikuj miejsca, w których potrzebują więcej wsparcia."
+      },
+      "interactiveElements": {
+        "title": "Elementy Interaktywne",
+        "description": "Dodawaj quizy, zadania i punkty kontrolne, aby utrzymać zaangażowanie uczniów."
+      },
+      "mobileFriendly": {
+        "title": "Przyjazny dla Urządzeń Mobilnych",
+        "description": "Twoje tutoriale wyglądają świetnie na każdym urządzeniu, od komputerów stacjonarnych po smartfony."
+      },
+      "analyticsDashboard": {
+        "title": "Panel Analityczny",
+        "description": "Uzyskaj wgląd w to, jak działają Twoje tutoriale, dzięki kompleksowej analityce."
+      }
+    }
+  },
+  "fitness": {
+    "title": "Specjalizacja dla Trenerów Fitness",
+    "subtitle": "Funkcje stworzone specjalnie, aby pomóc trenerom personalnym tworzyć efektywne programy treningowe i plany żywieniowe.",
+    "cards": {
+      "exerciseLibrary": {
+        "title": "Biblioteka Ćwiczeń",
+        "description": "Dostęp do kompleksowej biblioteki ćwiczeń z filmami i gifami pokazującymi prawidłową formę."
+      },
+      "workoutProgramBuilder": {
+        "title": "Kreator Programów Treningowych",
+        "description": "Projektuj progresywne programy treningowe za pomocą naszego specjalistycznego kreatora programów."
+      },
+      "nutritionGuidance": {
+        "title": "Poradnictwo Żywieniowe",
+        "description": "Twórz plany posiłków i dostarczaj zasoby żywieniowe, które uzupełniają treningi."
+      }
+    }
+  },
+  "cta": {
+    "title": "Bądź Pierwszym, Który Uzyska Wczesny Dostęp",
+    "subtitle": "Dołącz do naszej listy oczekujących już dziś i bądź wśród pierwszych, którzy tworzą angażujące, interaktywne tutoriale, które konwertują i zatrzymują uczniów."
+  },
+  "emailSignup": {
+    "emailLabel": "Adres Email",
+    "emailPlaceholder": "ty@przyklad.com",
+    "buttonText": "Dołącz do Listy Oczekujących",
+    "privacyNote": "Szanujemy Twoją prywatność. Możesz zrezygnować w dowolnym momencie.",
+    "thankYou": {
+      "title": "Dziękujemy!",
+      "message": "Dodaliśmy Cię do naszej listy oczekujących. Powiadomimy Cię, gdy uruchomimy!"
+    },
+    "error": "Proszę podać prawidłowy adres email"
+  },
+  "footer": {
+    "description": "Kompleksowa platforma do tworzenia interaktywnych, osadzalnych tutoriali. Idealna dla trenerów fitness, edukatorów i twórców treści.",
+    "product": "Produkt",
+    "company": "Firma",
+    "aboutUs": "O Nas",
+    "blog": "Blog",
+    "contact": "Kontakt",
+    "privacyPolicy": "Polityka Prywatności",
+    "termsOfService": "Warunki Korzystania z Usługi",
+    "copyright": "© {year} tuterio. Wszelkie prawa zastrzeżone."
+  },
+  "language": {
+    "en": "Angielski",
+    "pl": "Polski"
+  }
+} 

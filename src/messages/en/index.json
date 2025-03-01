@@ -1,0 +1,92 @@
+{
+  "navigation": {
+    "features": "Features",
+    "fitness": "Fitness",
+    "getEarlyAccess": "Get Early Access"
+  },
+  "hero": {
+    "title": "Build <primary>Interactive Tutorials</primary> That Convert",
+    "subtitle": "Empower your students with engaging interactive tutorials that can be embedded anywhere. Perfect for fitness trainers, educators and content creators.",
+    "noCoding": "No coding required",
+    "embedAnywhere": "Embed anywhere",
+    "trackProgress": "Track progress"
+  },
+  "features": {
+    "title": "Powerful Features for Content Creators",
+    "subtitle": "Everything you need to create engaging, interactive tutorials that convert and retain students.",
+    "cards": {
+      "dragAndDrop": {
+        "title": "Drag-and-Drop Builder",
+        "description": "Create beautiful tutorials with our intuitive drag-and-drop interface. No coding required."
+      },
+      "embedAnywhere": {
+        "title": "Embed Anywhere",
+        "description": "Seamlessly embed your tutorials on any website with a simple JavaScript snippet."
+      },
+      "progressTracking": {
+        "title": "Progress Tracking",
+        "description": "Track your students' progress and identify where they need more support."
+      },
+      "interactiveElements": {
+        "title": "Interactive Elements",
+        "description": "Add quizzes, assignments, and checkpoints to keep your students engaged."
+      },
+      "mobileFriendly": {
+        "title": "Mobile Friendly",
+        "description": "Your tutorials look great on any device, from desktops to smartphones."
+      },
+      "analyticsDashboard": {
+        "title": "Analytics Dashboard",
+        "description": "Gain insights into how your tutorials are performing with comprehensive analytics."
+      }
+    }
+  },
+  "fitness": {
+    "title": "Specialized for Fitness Trainers",
+    "subtitle": "Purpose-built features to help personal trainers create effective workout programs and nutrition plans.",
+    "cards": {
+      "exerciseLibrary": {
+        "title": "Exercise Library",
+        "description": "Access a comprehensive library of exercises with proper form videos and gifs."
+      },
+      "workoutProgramBuilder": {
+        "title": "Workout Program Builder",
+        "description": "Design progressive workout programs with our specialized program builder."
+      },
+      "nutritionGuidance": {
+        "title": "Nutrition Guidance",
+        "description": "Create meal plans and provide nutritional resources to complement workouts."
+      }
+    }
+  },
+  "cta": {
+    "title": "Be the First to Get Early Access",
+    "subtitle": "Join our waitlist today and be among the first to create engaging, interactive tutorials that convert and retain students."
+  },
+  "emailSignup": {
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "you@example.com",
+    "buttonText": "Join the Waitlist",
+    "privacyNote": "We respect your privacy. Unsubscribe at any time.",
+    "thankYou": {
+      "title": "Thank You!",
+      "message": "We've added you to our waitlist. We'll notify you when we launch!"
+    },
+    "error": "Please enter a valid email address"
+  },
+  "footer": {
+    "description": "The all-in-one platform for creating interactive, embeddable tutorials. Perfect for fitness trainers, educators, and content creators.",
+    "product": "Product",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "blog": "Blog",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "copyright": "© {year} tuterio. All rights reserved."
+  },
+  "language": {
+    "en": "English",
+    "pl": "Polish"
+  }
+} 

@@ -17,6 +17,7 @@ import Header from '@/components/Header';
 import EmailSignup from '@/components/EmailSignup';
 import FeatureCard from '@/components/FeatureCard';
 import { useTheme } from '@/components/ThemeProvider';
+import { useLanguage } from '@/components/LanguageProvider';
 
 // Animation variants
 const fadeIn = {
@@ -43,6 +44,7 @@ const staggerContainer = {
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
+  const { t } = useLanguage();
   const isDark = theme === 'dark';
 
   useEffect(() => {
@@ -52,6 +54,22 @@ export default function Home() {
   if (!mounted) {
     return null; // Return nothing on the server side
   }
+
+  // Helper function to render text with primary spans
+  const renderWithPrimary = (text: string) => {
+    if (!text.includes('<primary>') || !text.includes('</primary>')) {
+      return text;
+    }
+    
+    const parts = text.split(/<primary>|<\/primary>/);
+    return (
+      <>
+        {parts[0]}
+        <span className="text-primary-500">{parts[1]}</span>
+        {parts[2]}
+      </>
+    );
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -68,21 +86,21 @@ export default function Home() {
               className="space-y-6"
             >
               <h1 className={`heading-xl ${isDark ? 'text-fluent-darkText1' : 'text-fluent-lightText1'}`}>
-                Build <span className="text-primary-500">Interactive Tutorials</span> That Convert
+                {renderWithPrimary(t('hero.title'))}
               </h1>
               <p className={`text-xl ${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'} md:pr-10`}>
-                Empower your students with engaging interactive tutorials that can be embedded anywhere. Perfect for fitness trainers, educators and content creators.
+                {t('hero.subtitle')}
               </p>
               <div className="pt-4">
-                <a href="#signup" className="btn-primary mr-4">Get Early Access</a>
-                <a href="#features" className="btn-secondary">Learn More</a>
+                <a href="#signup" className="btn-primary mr-4">{t('navigation.getEarlyAccess')}</a>
+                <a href="#features" className="btn-secondary">{t('navigation.features')}</a>
               </div>
               <div className={`pt-4 flex items-center text-sm ${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'}`}>
-                <span className="mr-2 text-primary-500">✓</span> No coding required
+                <span className="mr-2 text-primary-500">✓</span> {t('hero.noCoding')}
                 <span className={`mx-2 ${isDark ? 'text-fluent-gray130' : 'text-fluent-gray70'}`}>|</span>
-                <span className="mr-2 text-primary-500">✓</span> Embed anywhere
+                <span className="mr-2 text-primary-500">✓</span> {t('hero.embedAnywhere')}
                 <span className={`mx-2 ${isDark ? 'text-fluent-gray130' : 'text-fluent-gray70'}`}>|</span>
-                <span className="mr-2 text-primary-500">✓</span> Track progress
+                <span className="mr-2 text-primary-500">✓</span> {t('hero.trackProgress')}
               </div>
             </motion.div>
             
@@ -151,10 +169,10 @@ export default function Home() {
               variants={fadeIn}
             >
               <h2 className={`heading-lg mb-4 ${isDark ? 'text-fluent-darkText1' : 'text-fluent-lightText1'}`}>
-                Powerful Features for Content Creators
+                {t('features.title')}
               </h2>
               <p className={`text-xl ${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'}`}>
-                Everything you need to create engaging, interactive tutorials that convert and retain students.
+                {t('features.subtitle')}
               </p>
             </motion.div>
           </div>
@@ -168,48 +186,48 @@ export default function Home() {
           >
             <motion.div variants={fadeIn}>
               <FeatureCard
-                title="Drag-and-Drop Builder"
-                description="Create beautiful tutorials with our intuitive drag-and-drop interface. No coding required."
+                title={t('features.cards.dragAndDrop.title')}
+                description={t('features.cards.dragAndDrop.description')}
                 icon={<FiFileText size={24} className="text-primary-500" />}
               />
             </motion.div>
             
             <motion.div variants={fadeIn}>
               <FeatureCard
-                title="Embed Anywhere"
-                description="Seamlessly embed your tutorials on any website with a simple JavaScript snippet."
+                title={t('features.cards.embedAnywhere.title')}
+                description={t('features.cards.embedAnywhere.description')}
                 icon={<FiCode size={24} className="text-primary-500" />}
               />
             </motion.div>
             
             <motion.div variants={fadeIn}>
               <FeatureCard
-                title="Progress Tracking"
-                description="Track your students' progress and identify where they need more support."
+                title={t('features.cards.progressTracking.title')}
+                description={t('features.cards.progressTracking.description')}
                 icon={<FiBarChart2 size={24} className="text-primary-500" />}
               />
             </motion.div>
             
             <motion.div variants={fadeIn}>
               <FeatureCard
-                title="Interactive Elements"
-                description="Add quizzes, assignments, and checkpoints to keep your students engaged."
+                title={t('features.cards.interactiveElements.title')}
+                description={t('features.cards.interactiveElements.description')}
                 icon={<FiUsers size={24} className="text-primary-500" />}
               />
             </motion.div>
             
             <motion.div variants={fadeIn}>
               <FeatureCard
-                title="Mobile Friendly"
-                description="Your tutorials look great on any device, from desktops to smartphones."
+                title={t('features.cards.mobileFriendly.title')}
+                description={t('features.cards.mobileFriendly.description')}
                 icon={<FiSmartphone size={24} className="text-primary-500" />}
               />
             </motion.div>
             
             <motion.div variants={fadeIn}>
               <FeatureCard
-                title="Analytics Dashboard"
-                description="Gain insights into how your tutorials are performing with comprehensive analytics."
+                title={t('features.cards.analyticsDashboard.title')}
+                description={t('features.cards.analyticsDashboard.description')}
                 icon={<FiPieChart size={24} className="text-primary-500" />}
               />
             </motion.div>
@@ -228,10 +246,10 @@ export default function Home() {
               variants={fadeIn}
             >
               <h2 className={`heading-lg mb-4 ${isDark ? 'text-fluent-darkText1' : 'text-fluent-lightText1'}`}>
-                Specialized for Fitness Trainers
+                {t('fitness.title')}
               </h2>
               <p className={`text-xl ${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'}`}>
-                Purpose-built features to help personal trainers create effective workout programs and nutrition plans.
+                {t('fitness.subtitle')}
               </p>
             </motion.div>
           </div>
@@ -246,8 +264,8 @@ export default function Home() {
             >
               <motion.div variants={fadeIn}>
                 <FeatureCard
-                  title="Exercise Library"
-                  description="Access a comprehensive library of exercises with proper form videos and gifs."
+                  title={t('fitness.cards.exerciseLibrary.title')}
+                  description={t('fitness.cards.exerciseLibrary.description')}
                   icon={<MdFitnessCenter size={24} className="text-primary-500" />}
                   className="mb-6"
                 />
@@ -255,8 +273,8 @@ export default function Home() {
               
               <motion.div variants={fadeIn}>
                 <FeatureCard
-                  title="Workout Program Builder"
-                  description="Design progressive workout programs with our specialized program builder."
+                  title={t('fitness.cards.workoutProgramBuilder.title')}
+                  description={t('fitness.cards.workoutProgramBuilder.description')}
                   icon={<MdSportsMartialArts size={24} className="text-primary-500" />}
                   className="mb-6"
                 />
@@ -264,8 +282,8 @@ export default function Home() {
               
               <motion.div variants={fadeIn}>
                 <FeatureCard
-                  title="Nutrition Guidance"
-                  description="Create meal plans and provide nutritional resources to complement workouts."
+                  title={t('fitness.cards.nutritionGuidance.title')}
+                  description={t('fitness.cards.nutritionGuidance.description')}
                   icon={<MdOutlineMenuBook size={24} className="text-primary-500" />}
                 />
               </motion.div>
@@ -336,9 +354,9 @@ export default function Home() {
               variants={fadeIn}
               className="mb-8"
             >
-              <h2 className="heading-lg mb-4">Be the First to Get Early Access</h2>
+              <h2 className="heading-lg mb-4">{t('cta.title')}</h2>
               <p className="text-xl text-fluent-darkText1 mb-8">
-                Join our waitlist today and be among the first to create engaging, interactive tutorials that convert and retain students.
+                {t('cta.subtitle')}
               </p>
               <div className="bg-fluent-darkBg1/80 backdrop-blur-sm p-8 rounded-lg border border-fluent-gray140 shadow-xl">
                 <div className="max-w-md mx-auto">
@@ -357,8 +375,7 @@ export default function Home() {
             <div className="md:col-span-2">
               <h3 className="text-2xl font-semibold text-fluent-darkText1 mb-4">tuterio</h3>
               <p className="text-fluent-darkText2 mb-4">
-                The all-in-one platform for creating interactive, embeddable tutorials.
-                Perfect for fitness trainers, educators, and content creators.
+                {t('footer.description')}
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="text-fluent-darkText3 hover:text-primary-400 transition-colors">
@@ -377,30 +394,30 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold text-fluent-darkText1 mb-4">Product</h4>
+              <h4 className="text-lg font-semibold text-fluent-darkText1 mb-4">{t('footer.product')}</h4>
               <ul className="space-y-2">
-                <li><a href="#features" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">Features</a></li>
-                <li><a href="#fitness" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">Fitness Module</a></li>
+                <li><a href="#features" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">{t('navigation.features')}</a></li>
+                <li><a href="#fitness" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">{t('navigation.fitness')}</a></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold text-fluent-darkText1 mb-4">Company</h4>
+              <h4 className="text-lg font-semibold text-fluent-darkText1 mb-4">{t('footer.company')}</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">Blog</a></li>
-                <li><a href="#" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">Contact</a></li>
+                <li><a href="#" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">{t('footer.aboutUs')}</a></li>
+                <li><a href="#" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">{t('footer.blog')}</a></li>
+                <li><a href="#" className="text-fluent-darkText2 hover:text-primary-400 transition-colors">{t('footer.contact')}</a></li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-fluent-gray160 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-fluent-darkText3 text-sm">
-              &copy; {new Date().getFullYear()} tuterio. All rights reserved.
+              {t('footer.copyright').replace('{year}', new Date().getFullYear().toString())}
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-fluent-darkText3 hover:text-primary-400 transition-colors text-sm">Privacy Policy</a>
-              <a href="#" className="text-fluent-darkText3 hover:text-primary-400 transition-colors text-sm">Terms of Service</a>
+              <a href="#" className="text-fluent-darkText3 hover:text-primary-400 transition-colors text-sm">{t('footer.privacyPolicy')}</a>
+              <a href="#" className="text-fluent-darkText3 hover:text-primary-400 transition-colors text-sm">{t('footer.termsOfService')}</a>
             </div>
           </div>
         </div>

@@ -4,12 +4,15 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useTheme } from './ThemeProvider';
+import { useLanguage } from './LanguageProvider';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { t } = useLanguage();
   const isDark = theme === 'dark';
 
   useEffect(() => {
@@ -49,13 +52,14 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-4">
             <Link href="#features" className={`${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'} hover:text-primary-400 transition-colors`}>
-              Features
+              {t('navigation.features')}
             </Link>
             <Link href="#fitness" className={`${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'} hover:text-primary-400 transition-colors`}>
-              Fitness
+              {t('navigation.fitness')}
             </Link>
+            <LanguageSwitcher />
             <button 
               onClick={toggleTheme}
               className={`p-2 rounded-full focus:outline-none transition-colors ${
@@ -76,12 +80,13 @@ const Header: React.FC = () => {
               )}
             </button>
             <Link href="#signup" className="btn-primary">
-              Get Early Access
+              {t('navigation.getEarlyAccess')}
             </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
+            <LanguageSwitcher />
             <button 
               onClick={toggleTheme}
               className={`p-2 rounded-full focus:outline-none transition-colors ${
@@ -137,21 +142,21 @@ const Header: React.FC = () => {
                 className={`${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'} hover:text-primary-400 transition-colors`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Features
+                {t('navigation.features')}
               </Link>
               <Link 
                 href="#fitness" 
                 className={`${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'} hover:text-primary-400 transition-colors`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Fitness
+                {t('navigation.fitness')}
               </Link>
               <Link 
                 href="#signup" 
                 className="btn-primary inline-block text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get Early Access
+                {t('navigation.getEarlyAccess')}
               </Link>
             </nav>
           </motion.div>
