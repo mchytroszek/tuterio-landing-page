@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 
 type Locale = 'en' | 'pl';
 
@@ -26,41 +26,43 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const router = useRouter();
   const [locale, setLocaleState] = useState<Locale>('en');
   const [messages, setMessages] = useState<Record<string, any>>({});
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Initialize locale from router or localStorage
-    const initialLocale = (router.locale || localStorage.getItem('locale') || 'en') as Locale;
-    setLocaleState(initialLocale);
-    
-    // Load messages for the current locale
-    const loadMessages = async () => {
-      try {
-        const localeMessages = await import(`../messages/${initialLocale}/index.json`);
-        setMessages(localeMessages);
-      } catch (error) {
-        console.error('Failed to load messages:', error);
-      }
-    };
-    
-    loadMessages();
-  }, [router.locale]);
+    // Initialize locale from localStorage
+    if (typeof window !== 'undefined') {
+      const savedLocale = localStorage.getItem('locale');
+      const initialLocale = (savedLocale || 'en') as Locale;
+      setLocaleState(initialLocale);
+      
+      // Load messages for the current locale
+      const loadMessages = async () => {
+        try {
+          const localeMessages = await import(`../messages/${initialLocale}/index.json`);
+          setMessages(localeMessages.default || localeMessages);
+        } catch (error) {
+          console.error('Failed to load messages:', error);
+        }
+      };
+      
+      loadMessages();
+    }
+  }, []);
 
   const setLocale = (newLocale: Locale) => {
-    localStorage.setItem('locale', newLocale);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('locale', newLocale);
+    }
     setLocaleState(newLocale);
-    
-    // Change the URL to reflect the new locale
-    const { pathname, asPath, query } = router;
-    router.push({ pathname, query }, asPath, { locale: newLocale });
     
     // Load messages for the new locale
     const loadMessages = async () => {
       try {
         const localeMessages = await import(`../messages/${newLocale}/index.json`);
-        setMessages(localeMessages);
+        setMessages(localeMessages.default || localeMessages);
       } catch (error) {
         console.error('Failed to load messages:', error);
       }
