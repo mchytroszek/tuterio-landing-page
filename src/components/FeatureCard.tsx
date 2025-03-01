@@ -1,4 +1,7 @@
+"use client";
+
 import React, { ReactNode } from 'react';
+import { useTheme } from './ThemeProvider';
 
 interface FeatureCardProps {
   title: string;
@@ -13,15 +16,18 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   icon,
   className = "",
 }) => {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
-    <div className={`bg-fluent-darkBg1 border border-fluent-gray160 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow ${className}`}>
+    <div className={`${isDark ? 'bg-fluent-darkBg1 border-fluent-gray160' : 'bg-fluent-lightBg1 border-fluent-gray40'} border rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow ${className}`}>
       <div className="flex items-center mb-4">
         <div className="mr-4 text-primary-500">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold text-fluent-darkText1">{title}</h3>
+        <h3 className={`text-xl font-semibold ${isDark ? 'text-fluent-darkText1' : 'text-fluent-lightText1'}`}>{title}</h3>
       </div>
-      <p className="text-fluent-darkText2">{description}</p>
+      <p className={`${isDark ? 'text-fluent-darkText2' : 'text-fluent-lightText2'}`}>{description}</p>
     </div>
   );
 };
