@@ -80,4 +80,12 @@ The landing page can be customized to fit your specific needs:
 - Update colors in `tailwind.config.js`
 - Modify content in `src/app/page.tsx`
 - Add custom components in `src/components`
-- Change images by replacing files in `public/images` 
+- Change images by replacing files in `public/images`
+
+## Testing
+
+This section was added to test the GitHub MCP workflow including:
+- Branch creation
+- File modifications
+- Automated commits
+- Pull request creation
